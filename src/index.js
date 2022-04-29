@@ -1,17 +1,15 @@
-const cart = [];
+const util = require("./util");
 
-function log(message) {
-  console.log(message);
-}
+const cart = [];
 
 function addToCart(item) {
   cart.push(item);
-  log("added new item: " + item);
+  util.log("added item: " + item);
 }
 
 function removeFromCart(idx) {
   cart.splice(idx, 1);
-  log("removed: ", idx);
+  util.log("removed: ", idx);
 }
 
 addToCart("Waterproof Boots");
