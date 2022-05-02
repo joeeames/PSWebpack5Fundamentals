@@ -1,11 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { config } = require("process");
 
-config = {
-  entry: ["./src/index.ts"],
+const config = {
+  entry: { main: "./src/index", home: "./src/home" },
   output: {
-    filename: "main.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
@@ -32,7 +31,10 @@ config = {
   ],
 };
 
-config.mode =
-  process.env.NODE_ENV === "production" ? "production" : "development";
+let production = process.env.NODE_ENV === "production";
+if (production) {
+  config.mode = "production";
+  config.devtool = "inline-source-map";
+}
 
 module.exports = config;
