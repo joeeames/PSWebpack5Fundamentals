@@ -2,11 +2,22 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: ["./src/index.js", "./src/home.js"],
+  entry: ["./src/index.ts"],
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, "dist"),
-    clean: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /node_modules/,
+        use: "ts-loader",
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
   },
   devtool: "inline-source-map",
   mode: "development",
