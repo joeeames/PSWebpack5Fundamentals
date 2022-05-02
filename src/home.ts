@@ -1,6 +1,6 @@
 import util from "./util";
 
-function notificationRegister(email) {
+function notificationRegister(email: string) {
   util.log("registering " + email);
   // send registration HTTP request
 }
