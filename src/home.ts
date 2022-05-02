@@ -1,4 +1,4 @@
-const util = require("./util");
+import util from "./util";
 
 function notificationRegister(email) {
   util.log("registering " + email);
