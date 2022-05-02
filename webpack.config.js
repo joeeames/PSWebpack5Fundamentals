@@ -1,7 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { config } = require("process");
 
-module.exports = {
+config = {
   entry: ["./src/index.ts"],
   output: {
     filename: "main.js",
@@ -30,3 +31,8 @@ module.exports = {
     }),
   ],
 };
+
+config.mode =
+  process.env.NODE_ENV === "production" ? "production" : "development";
+
+module.exports = config;
