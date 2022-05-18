@@ -26,6 +26,7 @@ let config = {
   devtool: "inline-source-map",
   mode: "development",
   devServer: {
+    watchFiles: ["src/**/*", "index.html"],
     static: "./dist",
   },
 };
