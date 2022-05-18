@@ -6,7 +6,7 @@ const cart = [];
 
 function addToCart(item) {
   cart.push(item);
-  util.log("added item: " + item);
+  util.log("added items: " + item);
 }
 
 function removeFromCart(idx) {

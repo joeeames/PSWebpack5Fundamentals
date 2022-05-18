@@ -29,6 +29,7 @@ const config = {
   mode: "development",
   devServer: {
     static: "./dist",
+    watchFiles: ["src/**/*", "index.html"],
   },
   plugins: [
     new HtmlWebpackPlugin({
