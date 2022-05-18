@@ -1,15 +1,14 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 let production = process.env.NODE_ENV === "production";
 
 let config = {
-  entry: {
-    index: "./src/index",
-    home: "./src/home",
-  },
+  entry: ["./src/index", "./src/home"],
   output: {
-    filename: "[name].js",
+    filename: "main.js",
     path: path.resolve(__dirname, "dist"),
+    clean: true,
   },
   module: {
     rules: [
@@ -20,6 +19,7 @@ let config = {
       },
     ],
   },
+  plugins: [new HtmlWebpackPlugin({ template: "./index.html" })],
   resolve: {
     extensions: [".ts", ".js"],
   },
