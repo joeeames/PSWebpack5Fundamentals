@@ -4,7 +4,7 @@ $lightGray: #a0a0a0;
 
 .header-nav--nav {
   border: 0;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 4px solid $lightGray;
   margin-bottom: 0;
 }
 
@@ -37,7 +37,7 @@ $lightGray: #a0a0a0;
   box-shadow: none;
 }
 .header-nav--nav .header-nav--main .form-inline .btn-default {
-  background: #a0a0a0;
+  background: $lightGray;
   position: relative;
   border: 0;
   border-radius: 0;
