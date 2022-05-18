@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: ["./src/index", "./src/home"],
@@ -19,7 +18,17 @@ const config = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: { plugins: [["postcss-preset-env", {}]] },
+            },
+          },
+          "sass-loader",
+        ],
       },
     ],
   },
@@ -36,7 +45,6 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
-    new MiniCssExtractPlugin(),
   ],
 };
 

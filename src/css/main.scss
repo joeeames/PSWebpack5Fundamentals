@@ -2,6 +2,12 @@
 
 $lightGray: #a0a0a0;
 
+@media (min-resolution: 2dppx) {
+  .header-nav--nav {
+    border: 5px;
+  }
+}
+
 .header-nav--nav {
   border: 0;
   border-bottom: 4px solid $lightGray;
