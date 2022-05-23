@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
   entry: ["./src/index", "./src/home"],
@@ -18,18 +19,25 @@ const config = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: { plugins: [["postcss-preset-env", {}]] },
-            },
-          },
-          "sass-loader",
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
+      // {
+      //   test: /\.html$/,
+      //   exclude: /node_modules/,
+      //   use: ["html-loader"],
+      // },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
+      //   type: "asset",
+      //   parser: {
+      //     dataUrlCondition: {
+      //       maxSize: 20 * 1024,
+      //     },
+      //   },
+      //   generator: {
+      //     filename: "images/[name][ext]",
+      //   },
+      // },
     ],
   },
   resolve: {
@@ -44,6 +52,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./index.html",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "./images", to: "images" }],
     }),
   ],
 };
