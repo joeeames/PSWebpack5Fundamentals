@@ -12,6 +12,10 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.txt$/,
+        type: "asset/source",
+      },
+      {
         test: /\.ts$/,
         exclude: /node_modules/,
         use: "ts-loader",
@@ -21,11 +25,18 @@ const config = {
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-      // {
-      //   test: /\.html$/,
-      //   exclude: /node_modules/,
-      //   use: ["html-loader"],
-      // },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "images/[hash][ext]",
+        },
+      },
+      {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: "html-loader",
+      },
       // {
       //   test: /\.(png|svg|jpg|jpeg|gif)$/i,
       //   type: "asset",
@@ -53,9 +64,9 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./index.html",
     }),
-    new CopyPlugin({
-      patterns: [{ from: "./images", to: "images" }],
-    }),
+    // new CopyPlugin({
+    //   patterns: [{ from: "./images", to: "images" }],
+    // }),
   ],
 };
 
