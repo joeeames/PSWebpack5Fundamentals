@@ -18,6 +18,23 @@ let config = {
         use: "ts-loader",
       },
       {
+        test: /\.html$/,
+        exclude: /node_modules/,
+        use: "html-loader",
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 50 * 1024,
+          },
+        },
+        generator: {
+          filename: "images/[hash][name][ext]",
+        },
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ["style-loader", "css-loader", "sass-loader"],
