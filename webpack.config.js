@@ -1,5 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
+const HelloWorldPlugin = require("./hw-plugin/index");
 
 let production = process.env.NODE_ENV === "production";
 
@@ -41,7 +44,11 @@ let config = {
       },
     ],
   },
-  plugins: [new HtmlWebpackPlugin({ template: "./index.html" })],
+  plugins: [
+    new HtmlWebpackPlugin({ template: "./index.html" }),
+    new HelloWorldPlugin(),
+    // new BundleAnalyzerPlugin(),
+  ],
   resolve: {
     extensions: [".ts", ".js"],
   },
